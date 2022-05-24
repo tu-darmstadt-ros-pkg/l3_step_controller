@@ -1,0 +1,7 @@
+<library path="lib/libl3_step_controller_plugins">
+  <class name="step_controller_test_plugin" type="l3_step_controller::StepControllerTestPlugin" base_class_type="l3_step_controller::StepControllerPlugin">
+    <description>
+      StepControllerTestPlugin: Example plugin which simulates execution of steps.
+    </description>
+  </class>
+</library>
