@@ -73,7 +73,7 @@ msgs::ErrorStatus StepControllerTestPlugin::preProcess(const ros::TimerEvent& ev
 msgs::ErrorStatus StepControllerTestPlugin::executeStep(Step::ConstPtr step)
 {
   double max_duration = 0;
-  for (const Step::StepDataPair p : step->getStepDataMap())
+  for (const Step::FootStep::MovingDataPair& p : step->footStep().getMovingLinks())
   {
     if (p.second->step_duration > max_duration)
       max_duration = p.second->step_duration;
