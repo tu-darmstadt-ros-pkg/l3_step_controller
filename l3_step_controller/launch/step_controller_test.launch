@@ -4,7 +4,8 @@
   <arg name="ns" default="l3" />
   <group ns="$(arg ns)">
     <!-- start step controller -->
-    <node name="step_controller" pkg="l3_step_controller" type="step_controller_node" respawn="true" output="screen" />
-    <param name="step_controller_plugin" value="step_controller_test_plugin" />
+    <node name="step_controller" pkg="l3_step_controller" type="step_controller_node" respawn="true" output="screen">
+      <param name="step_controller_plugin" value="step_controller_test_plugin" />
+    </node>
   </group>
 </launch>

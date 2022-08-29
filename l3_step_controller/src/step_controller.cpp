@@ -26,8 +26,10 @@ StepController::~StepController() {}
 
 bool StepController::initialize(ros::NodeHandle& nh, bool auto_spin)
 {
+  ros::NodeHandle pnh("~");
+
   // init step controller plugin
-  if (!loadPlugin(nh.param("step_controller_plugin", std::string("step_controller_plugin")), step_controller_plugin_))
+  if (!loadPlugin(pnh.param("step_controller_plugin", std::string("step_controller_plugin")), step_controller_plugin_))
     return false;
 
   return initialize(nh, step_controller_plugin_, auto_spin);
