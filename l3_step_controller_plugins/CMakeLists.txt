@@ -97,6 +97,7 @@ include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 ## Specify additional locations of header files
 set(HEADERS
+  include/${PROJECT_NAME}/base/simple_step_controller_plugin.h
   include/${PROJECT_NAME}/base/step_controller_plugin.h
   include/${PROJECT_NAME}/std/step_controller_test_plugin.h
 )
@@ -115,7 +116,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${kdl_parser_LIBRARIES} ${orocos_kdl_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 #############
 ## Install ##
