@@ -31,8 +31,6 @@
 
 #include <l3_step_controller_plugins/base/step_controller_plugin.h>
 
-#include <fm_hybrid_trajectory_optimization_ros_msgs/Initialization.h>
-
 namespace l3_step_controller
 {
 using namespace l3;
@@ -43,9 +41,10 @@ using namespace l3_step_controller;
  * @brief Simple step controller plugin that converts an entire step plan to
  * another message and publishes it afterwards.
  * The template stub requires to specify the message type and only to override
- * the execute(...) method that converts each step. If further initialization is
- * neccessary, just override preProcess(...) or process(...) but do not forget to
- * call the implementation provided by SimpleStepControllerPlugin.
+ * the execute(...) method that converts each step and writes directly the result
+ * in the msg_ member. If further initialization is neccessary, just override
+ * preProcess(...) or process(...) but do not forget to call the implementation
+ * provided by SimpleStepControllerPlugin.
  */
 template <class MsgType>
 class SimpleStepControllerPlugin : public StepControllerPlugin
@@ -125,6 +124,8 @@ public:
     for (const StepQueue::Entry& e : step_plan_.getSteps())
     {
       Step::ConstPtr step = e.second;
+
+      // calls execute that must be overwritten to fill the msg_ member
       status += this->executeStep(step);
 
       if (hasError(status))
