@@ -57,7 +57,7 @@ public:
     if (!StepControllerPlugin::initialize(params))
       return false;
 
-    publisher_ = nh_.advertise<MsgType>("step_controller", 1);
+    publisher_ = nh_.advertise<MsgType>("cmd", 1);
 
     return true;
   }
